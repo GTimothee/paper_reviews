@@ -71,7 +71,6 @@ under certain circumstances can deviate significantly from the true answer.
 - Experimental comparison of the estimation errors induced by the models using synthetic workloads on real life datasets.
 
 ## Related work
-
-In nearly all applications that use disk resident large scale multi-dimensional arrays, the physical
-organization of the array is by chunking.
-
+- In nearly all applications that use disk resident large scale multi-dimensional arrays, the physical organization of the array is by chunking.
+- Within each chunk,the array elements are laid out using a conventional row-major or column-major ordering.
+- **The rationale for chunking large arrays**, whether dense or sparse, is justified in general when efficient I/O performance is desired in applications that access data with a high degree of locality.
