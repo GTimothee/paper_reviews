@@ -72,5 +72,9 @@ under certain circumstances can deviate significantly from the true answer.
 
 ## Related work
 - In nearly all applications that use disk resident large scale multi-dimensional arrays, the physical organization of the array is by chunking.
+- The other domain where array chunking has been predominantly used is in multidimensional on-line analytical processing algorithm (MOLAP) [19, 5, 9, 14, 12].
 - Within each chunk,the array elements are laid out using a conventional row-major or column-major ordering.
 - **The rationale for chunking large arrays**, whether dense or sparse, is justified in general when efficient I/O performance is desired in applications that access data with a high degree of locality.
+- [19]: The array is split into chunks of size equal to the block size of the
+disk storage system. Chunk compression is further used to improve storage utilization.
+- [5]: 
