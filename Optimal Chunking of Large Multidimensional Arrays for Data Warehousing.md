@@ -110,3 +110,7 @@ In [15], it was shown that knowledge of the predicted query access patterns can 
 
 ### A Motivating Example
 The following small example shows that the inaccuracy of the cost expression in [15] can lead to inaccurate estimation of the access costs, but even more importantly to suboptimal choices of chunk shapes.
+
+![alt text](./avg_query_cost.png "Average query cost")
+
+![alt text](./actual_cost.png "Actual cost")
