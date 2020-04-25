@@ -111,6 +111,46 @@ In [15], it was shown that knowledge of the predicted query access patterns can 
 ### A Motivating Example
 The following small example shows that the inaccuracy of the cost expression in [15] can lead to inaccurate estimation of the access costs, but even more importantly to suboptimal choices of chunk shapes.
 
+- the workload is represented as a collection of **q query shapes**, each occuring with probability pi (in this work and in 15).
+- average query cost according to 15:
 ![alt text](avg_query_cost.PNG "Average query cost")
+- actual query cost according to this study:
+![alt text](acutal_cost.PNG "Actual cost")
 
-![alt text](actual_cost.PNG "Actual cost")
+Example: 
+- 3d dataset 
+- query shape <40,60,120>
+- block size constraint of 212=4096.
+- 2 chunk shapes tested
+- resulting table of costs:
+![alt text](cost_summary.PNG "Cost summary table")
+- according to 15 we should choose chunk shape 1 but we can see from this study that it is a big error
+
+### Two models commonly used for query access pattern prediction
+In both model:
+- each query is associated with a shape <A1,A2, . . . ,Ak>.
+- the actual location of a query shape relative to the array is assumed to be uniformly distributed.
+
+#### Independent Attribute Range (IAR)
+- A probabilistic distribution of the possible range values is calculated separately for each of the k dimensions.
+- It is therefore assumed that query range in each dimension is independent from each other [1]
+- This assumption => the estimated probability of a query shape is calculated as a product of the estimated probabilities of its components
+
+#### Query Shape (QS)
+- From [15] (Sarawagi and Stonebraker)
+- the query access pattern is estimated in terms of probability distribution of complete query shapes rather than distributions of ranges of individual dimensions.
+
+The QS model, groups the queries into a collection of classes L1,L2,L3, . . . ,Lq such that the class Li contains all queries of shape <Ai1,Ai2, . . .Aik>. Each class Li is associated with a probability Pi.
+
+#### Example in 2D
+
+Access pattern estimation is based on a sample of 4 queries given in Table 2:
+![alt text](query_table.PNG "Some example queries")
+Range distribution for each dimension (IAR):
+![alt text](range_distributions.PNG "Some example queries")
+Shape distributions under the two models:
+![alt text](shape_distributions.PNG "Some example queries")
+
+Under model (QS) only observed shapes have non-zero probability != (IAR).
+
+## Optimizing Array Chunk Shapes
