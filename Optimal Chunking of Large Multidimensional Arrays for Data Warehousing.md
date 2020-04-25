@@ -77,4 +77,36 @@ under certain circumstances can deviate significantly from the true answer.
 - **The rationale for chunking large arrays**, whether dense or sparse, is justified in general when efficient I/O performance is desired in applications that access data with a high degree of locality.
 - [19]: The array is split into chunks of size equal to the block size of the
 disk storage system. Chunk compression is further used to improve storage utilization.
-- [5]: 
+- [5]: bit-encoded scheme for the position index of the occurring array elements: bit-encoded sparse structure(BESS).
+- In 19 and 5:
+  -  the chunking schemes are not driven by the query access pattern.
+  - given the fact that multi-dimensional databases for data warehousing have the propensity to grow, very little is discussed on how extendibility is managed in these schemes.
+- The problem on handling extendibility in chunked arrays is the research focus of the work in [14, 12].
+
+## Addressing Array Chunks: the BCRS
+The Block Compressed Row storage BCRS [4], for sparse matrices forms the basis of a typical chunk addressing method
+- The block addressing is done in two levels. The first level concerns locating the block that an element lies in and the second level concerns the location of the element within the block.
+- Each block has a coordinate index <i, j>.
+- The offset-values computed from a linear mapping function are organized into a vector of offset-indices.
+  - A linear mapping function I_{ij} = g(<i, j>), maps the coordinate index <i, i> onto an integer I_{ij}
+  - Inverse function <i, j>= g^{-1}(I_{ij}) takes an offset value and returns the coordinate index -> required for computing array
+elements under some circumstances such as locating neighbors.
+  - searching the offset index vector can be done with interpolation search OR the pairs of offset index and block pointers can be maintained as a balanced binary search tree. figure 2
+- The BCRS method generalizes naturally to addressing of chunked multi-dimensional arrays.
+
+For extremely large multi-dimensional arrays the first level chunk organization can be done with a B+−tree. This is the approach used in HDF5 [7], a popular multi-dimensional array file format used extensively in scientific computing.
+
+> Note to self: offset index vector may be the indices of blocks to be retrieved
+
+## Access Models of Arrays
+We wish to store M on disk subject to the constraint that each disk block can hold at most C elements of M. This is done by partitioning M into equal shape rectangular chunks such that each chunk fits on a disk block. 
+
+Queries: Figure 3.
+- query q specifies a lower bound li and an upper bound ui on each of the k dimensions.
+- The cost of answering this query is directly related to the number of chunks (disk blocks) that overlap the sub-array defined by the  query.
+
+In [15], it was shown that knowledge of the predicted query access patterns can be efficiently used to select chunk dimensions that result in a **significant reduction in the cost of answering queries**.
+- Prediction of query access patterns is usually based on query statistics that are collected using query history logs, sampling, or other statistical methods.
+
+### A Motivating Example
+The following small example shows that the inaccuracy of the cost expression in [15] can lead to inaccurate estimation of the access costs, but even more importantly to suboptimal choices of chunk shapes.
