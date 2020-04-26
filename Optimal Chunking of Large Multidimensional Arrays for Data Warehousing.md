@@ -1,6 +1,7 @@
 # Optimal Chunking of Large Multidimensional Arrays for Data Warehousing
 - DOLAP '07: Proceedings of the ACM tenth international workshop on Data warehousing and OLAP
 - ACM: Association for Computing Machinery
+https://dl.acm.org/doi/10.1145/1317331.1317337
 
 ## Abstract
 - Very large multidimensional arrays are **commonly used in** data intensive scientific computations as well as MOLAP
