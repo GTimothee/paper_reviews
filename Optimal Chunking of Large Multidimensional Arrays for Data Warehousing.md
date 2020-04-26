@@ -154,3 +154,71 @@ Shape distributions under the two models:
 Under model (QS) only observed shapes have non-zero probability != (IAR).
 
 ## Optimizing Array Chunk Shapes
+- Assuming the array M is split into chunks of dimensions c = <c1, c2, ..., ck>
+- Given a shape A = <A1,A2, . . . ,Ak>
+Define E(A, c): the expected number of chunks overlapping the shape A assuming it can be located randomly anywhere in the array M.
+
+![alt text](expected_nb_chunks.PNG "expected_nb_chunks")
+
+### Analysis of the Independent Attribute Range (IAR) Model
+- closed form of optimization problem solved
+### Analysis of the shape model
+- no closed form solution
+- used greedy algorithm
+
+## Experimental results
+### simulation
+
+- Difference between 11 (former 15) and this study is formula for shape model
+- Under an assumption of equal probability of shapes
+- For the same c is and random values of A is we tested the accuracy of these expressions relative to the actual number of chunks that overlap the query region.
+- In our experiments, we formulated random queries on 2, 3, 4 and 5 dimensions, each dimension having equal probability of access.
+ 
+> We conducted such a simulation in an environment comprised of a 1.8 GHz AMD Athlon 64, with 1 GB main memory, running Ubuntu 6.06.1 LTS Linux operating system.
+
+![alt text](results.PNG "results")
+
+### real data
+- For the subsequent experiment, we actually use a large scale scientific dataset: Sloan Digital Sky Survey (SDSS)
+- SDSS is an astronomical survey project that maps one quarter of the entire sky in order to determine the positions and absolute brightnesses of more than 100 million celestial objects.
+- The survey also measures the distances to more than a million galaxies and quasars.
+- The data set of Data Release 1 consists of 168 million records and some 500 attributes.
+- selected 4 representative attributes for which query workload was available
+
+#### feature selection
+For this purpose we did an extensive study of the real query workloads from astronomers of the SDSS collaboration over a few weeks. We extracted 5,000 queries and identified four attributes that were by far the most commonly used ones in all observed queries.
+
+From the query workload we computed probability distribution of range sizes for attributes dec, ra shown respectively in the graphs of figures 5 and 6 respectively.
+> why only 2/4 ?
+
+In table 8, we show the performance of our optimal chunking method for different block sizes.
+
+The results are compared with symmetric chunking, i.e., chuck shapes in which all dimensions have equal sizes.
+
+![alt text](results2.PNG "results2")
+
+## Conclusion
+In both on-line analytical processing used in data warehousing
+and high performance data intensive scientific computing,
+multi-dimensional arrays form the principal funda-mental data structure for managing the data.
+
+Array chunking
+constitutes the prevalent method for performing I/O between
+primary and secondary storage and is embodied in
+the prevalent file formats for array data such as HDF5.
+
+We have presented exact mathematical
+models of the problem and solutions to both models with two
+different approaches; one using geometrical programming
+and the other using steepest descent optimization method.
+
+The analysis in this paper provides accurate estimations of
+the number of chunks that overlap hyper-rectangular query
+regions.
+
+a synthetic workload on real
+data validates our analysis.
+
+Future work will include addressing
+the problem with factors such as array sparseness,
+compression and possible variable chunk sizes.
