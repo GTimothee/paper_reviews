@@ -1,0 +1,39 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[KTH~Mechanics et~al.()KTH~Mechanics, KTH~Mechanics, KTH~Mechanics,
+  KTH~Mechanics, and KTH~Mechanics]{kth_mechanics}
+Mohammad~Hosseini KTH~Mechanics, Ricardo~Vinuesa KTH~Mechanics, Ardeshir
+  KTH~Hanifi KTH~Mechanics, Dan~Henningson KTH~Mechanics, and Philipp~Schlatter
+  KTH~Mechanics.
+\newblock V0078: Turbulent flow around a wing profile, a direct numerical
+  simulation.
+\newblock URL \url{https://doi.org/10.1103/APS.DFD.2015.GFM.V0078}.
+
+\bibitem[{Moon} et~al.(2001){Moon}, {Jagadish}, {Faloutsos}, and
+  {Saltz}]{908985}
+B.~{Moon}, H.~V. {Jagadish}, C.~{Faloutsos}, and J.~H. {Saltz}.
+\newblock Analysis of the clustering properties of the hilbert space-filling
+  curve.
+\newblock \emph{IEEE Transactions on Knowledge and Data Engineering},
+  13\penalty0 (1):\penalty0 124--141, Jan 2001.
+\newblock \doi{10.1109/69.908985}.
+
+\bibitem[Perlman et~al.(2007)Perlman, Burns, Li, and Meneveau]{inproceedings}
+Eric Perlman, Randal Burns, Yi~Li, and Charles Meneveau.
+\newblock Data exploration of turbulence simulations using a database cluster.
+\newblock page~23, 01 2007.
+\newblock \doi{10.1145/1362622.1362654}.
+
+\bibitem[Xu et~al.(2018)Xu, Nguyen, and
+  Tirthapura]{DBLP:journals/corr/abs-1801-07399}
+Pan Xu, Cuong Nguyen, and Srikanta Tirthapura.
+\newblock Onion curve: {A} space filling curve with near-optimal clustering.
+\newblock \emph{CoRR}, abs/1801.07399, 2018.
+\newblock URL \url{http://arxiv.org/abs/1801.07399}.
+
+\end{thebibliography}

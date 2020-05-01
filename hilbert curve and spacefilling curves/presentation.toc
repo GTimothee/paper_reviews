@@ -1,0 +1,5 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Asymptotic formula of the Hilbert curve}{8}{0}{2}
+\beamer@sectionintoc {3}{Experiments and comparisons}{13}{0}{3}
+\beamer@sectionintoc {4}{Example of usage}{23}{0}{4}
